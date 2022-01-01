@@ -1,11 +1,13 @@
 import { createStore } from "redux";
 
-const initialState = {cart :[1,2,2,5]}
+const initialState = {cart :0}
 
 const AddToCartReducer = (state = initialState, action) => {
     switch(action.type){
         case 'ADD TO CART':
-            return { ...state, cart:[...state.cart,action.payload] }
+            return { ...state, cart: state.cart + 1 }
+        case 'REMOVE_CART':
+            return { ...state, cart: state.cart = 0 }
        }
     return state;
 }

@@ -2,6 +2,8 @@
 import React,{useState} from 'react';
 import { Dimensions, ScrollView, Image, StyleSheet, Text,View, TouchableOpacity, ImageBackground,} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useDispatch } from 'react-redux';
+
 const {width , height} = Dimensions.get('screen');
 
 const ImageProduct =(props) => (
@@ -58,14 +60,20 @@ const ImageProduct =(props) => (
 
 const Product = ({navigation,route}) => {
  const  {title , cost , image} = route.params;
- 
+
+     const dispatch = useDispatch();  //
+
+    const AddToBag = () => {
+      const action = {type:'ADD TO CART'};
+      dispatch(action);
+    }
   return (
     <View style={{flex:1}}> 
         <ImageProduct image={image} navigation={navigation} />
         <Info title={title} cost={cost} />
 
         <View style={{flexDirection:'row',justifyContent:'space-around',marginTop:25}}>
-            <TouchableOpacity style={styles.btnBag}>
+            <TouchableOpacity style={styles.btnBag} onPress={AddToBag}>
                 <Text style={styles.btnTitleBag}>ADD TO BAG</Text>
                 <Ionicons name="cart-outline" size={25} color="#fff" />
             </TouchableOpacity>

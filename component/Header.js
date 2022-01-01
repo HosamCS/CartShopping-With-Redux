@@ -2,29 +2,58 @@
 import React from 'react';
 import { Text, View, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useSelector } from 'react-redux';
 const { height, width } = Dimensions.get('screen');
 
 export const Header = (props) => {
+
+  const state = useSelector (state => state.cart); //Hook from redux => Callback function return state
+
     return (
-        <View style={styles.viewHeader}>
-            <View style={{flexDirection: 'row', justifyContent: 'space-between',}}>
-           {/* LeftLebel */}
-           <TouchableOpacity style={styles.viewlableleft} onPress={props.onPressLeft}>
-             <Icon name={props.leftIcon} size={22}color={'#000'} />
-            </TouchableOpacity>
-             <Text style={styles.text}>{props.nameScreen}</Text>
-             {/* Right*/}
-          <TouchableOpacity style={styles.lebleleft}  onPress={props.onPressRight}>
-            <Icon name={props.rightIcon} size={25} color='#000' />
+      <View style={styles.viewHeader}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          {/* LeftLebel */}
+          <TouchableOpacity
+            style={styles.viewlableleft}
+            onPress={props.onPressLeft}>
+            <Icon name={props.leftIcon} size={22} color={'#000'} />
+          </TouchableOpacity>
+          <Text style={styles.text}>{props.nameScreen}</Text>
+          {/* Right*/}
+          <TouchableOpacity
+            style={styles.leblelRight}
+            onPress={props.onPressRight}>
+            <View
+              style={{
+                width: 50,
+                height: 30,
+                flexDirection: 'row',
+                justifyContent: 'space-evenly',
+              }}>
+              <View
+                style={{
+                  backgroundColor: 'red',
+                  width: 20,
+                  height: 20,
+                  borderRadius: 10,
+                  alignSelf: 'center',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  bottom: 8,
+                  left:8,
+                 
+                }}>
+                <Text style={{color:'#fff',fontWeight:'800'}}>{state}</Text>
+              </View>
+              <Icon name={props.rightIcon} size={30} color="#000" />
+            </View>
           </TouchableOpacity>
         </View>
-
-        </View>
-    )
+      </View>
+    );
 }
 const styles = StyleSheet.create({
-    lebleleft:{
+    leblelRight:{
         justifyContent: 'center', marginRight: 15
       },
       viewlableleft:{
