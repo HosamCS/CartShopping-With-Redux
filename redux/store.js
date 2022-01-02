@@ -5,11 +5,12 @@ const initialState = {count : 0, total : 0 , cart :[]}  //total cost of all item
 const AddToCartReducer = (state = initialState, action) => {
     switch(action.type){
         case 'ADD TO CART':
-       
-        //    const index = state.cart.findIndex(item => item.title === action.payload.title);
-        //    if(index === -1) {
-        //      state.cart.push(action.payload);
-        //    }
+          const index = state.cart.findIndex(item => item.title === action.payload.title);//check if item already in cart
+            if(index !== -1){
+              const newCart = [...state.cart];
+              newCart[index].count += 1;
+              return {...state, cart : newCart};
+            }
             let newArray = [ ...state.cart, action.payload]
             let count = newArray.length
          
