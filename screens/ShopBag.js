@@ -31,6 +31,10 @@ const ShopBag = ({navigation}) => {
     const decrement = (index) => {
      {dispatch({type :'DECREMENT',payload : {index:index}})}
     }
+
+    const removeItem = (index) => {
+      {dispatch({type:'REMOVE_ITEM',payload:{index:index}})}
+    }
   return (  
   <>
   <Header
@@ -67,6 +71,9 @@ const ShopBag = ({navigation}) => {
                          <Text style={{fontSize:25,fontWeight:'bold',fontFamily:'cursive' ,color:'#000'}}>{item.productCount}</Text>
                         <TouchableOpacity style={styles.BtnCounter} onPress={()=>decrement(index)}>
                           <Icon name="minus" size={16} color={'#000'} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.BtnCounter} onPress={()=>removeItem(index)}>
+                          <Icon name="trash" size={16} color={'#000'} />
                         </TouchableOpacity>
                       </View>
                     </View>

@@ -24,6 +24,19 @@ const AddToCartReducer = (state = initialState, action) => {
               total: 0,
               count :0
             } 
+        
+          case 'REMOVE_ITEM':
+            let arr2 = state.cart
+            let m = 0 ;
+            for(let i=0 ;i<arr2.length;i++){
+              m += arr2[i].cost
+            }
+            return{
+              ...state,
+              cart: arr2.filter((item,index)=>index !== action.payload.index),
+              total : m - state.cart[action.payload.index].cost,
+              count : state.count - 1
+            }  
             
          case 'INCREMENT':
            let arr = state.cart
