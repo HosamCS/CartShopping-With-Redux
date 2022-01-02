@@ -1,16 +1,27 @@
 import { createStore } from "redux";
 
-const initialState = {cart :0}
+const initialState = {count : 0, total : 0 , cart :[]}  //total cost of all items in cart
 
 const AddToCartReducer = (state = initialState, action) => {
     switch(action.type){
         case 'ADD TO CART':
-            return { ...state, cart: state.cart + 1 }
-        case 'REMOVE_CART':
-            return { ...state, cart: state.cart = 0 }
-       }
+       
+        //    const index = state.cart.findIndex(item => item.title === action.payload.title);
+        //    if(index === -1) {
+        //      state.cart.push(action.payload);
+        //    }
+            let newArray = [ ...state.cart, action.payload]
+            let count = newArray.length
+         
+            return {
+              
+                cart : newArray,
+                count, //count all items in cart
+                total : state.total + action.payload.cost, // 0+20+50 = 70
+             }
+         }
     return state;
 }
 
-const store =createStore(AddToCartReducer);
+const store = createStore(AddToCartReducer);
 export default store;

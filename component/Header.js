@@ -7,7 +7,7 @@ const { height, width } = Dimensions.get('screen');
 
 export const Header = (props) => {
 
-  const state = useSelector (state => state.cart); //Hook from redux => Callback function return state
+  const state = useSelector (state => state); //Hook from redux => Callback function return state
 
     return (
       <View style={styles.viewHeader}>
@@ -43,7 +43,7 @@ export const Header = (props) => {
                   left:8,
                  
                 }}>
-                <Text style={{color:'#fff',fontWeight:'800'}}>{state}</Text>
+                {/* <Text style={{color:'#fff',fontWeight:'800'}}>{state}</Text> */}
               </View>
               <Icon name={props.rightIcon} size={30} color="#000" />
             </View>

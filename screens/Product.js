@@ -3,6 +3,7 @@ import React,{useState} from 'react';
 import { Dimensions, ScrollView, Image, StyleSheet, Text,View, TouchableOpacity, ImageBackground,} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useDispatch } from 'react-redux';
+import { items } from '../DataGategory';
 
 const {width , height} = Dimensions.get('screen');
 
@@ -21,8 +22,6 @@ const ImageProduct =(props) => (
               <TouchableOpacity onPress={()=>props.navigation.goBack()}>
                   <Ionicons name="return-up-back-outline" size={25} color="#000" />
              </TouchableOpacity>
-
-           
             <Ionicons name="share-social-outline" size={25} color="#000" />
           </View>
       </ImageBackground>
@@ -63,9 +62,10 @@ const Product = ({navigation,route}) => {
 
      const dispatch = useDispatch();  //
 
-    const AddToBag = () => {
-      const action = {type:'ADD TO CART'};
+    const AddToBag = (props) => {
+      const action = {type:'ADD TO CART',payload :{title,cost,image}};
       dispatch(action);
+     
     }
   return (
     <View style={{flex:1}}> 
