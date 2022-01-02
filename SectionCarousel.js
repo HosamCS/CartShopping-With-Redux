@@ -28,6 +28,7 @@ const MyCarousel = ({props,navigation}) => {
             title:item.title,
             cost:item.cost,
             image:item.image,
+            productCount:item.productCount
         })}
         >
         <ParallaxImage

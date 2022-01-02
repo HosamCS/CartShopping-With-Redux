@@ -53,24 +53,23 @@ const ImageProduct =(props) => (
         </View>
       </>
       )
-
   }
 
 
 const Product = ({navigation,route}) => {
- const  {title , cost , image} = route.params;
+ const  {title , cost , image ,} = route.params;
 
      const dispatch = useDispatch();  //
 
     const AddToBag = (props) => {
-      const action = {type:'ADD TO CART',payload :{title,cost,image}};
+      const action = {type:'ADD TO CART',payload :{title,cost,image ,}};
       dispatch(action);
      
     }
   return (
     <View style={{flex:1}}> 
         <ImageProduct image={image} navigation={navigation} />
-        <Info title={title} cost={cost} />
+        <Info title={title} cost={cost}  />
 
         <View style={{flexDirection:'row',justifyContent:'space-around',marginTop:25}}>
             <TouchableOpacity style={styles.btnBag} onPress={AddToBag}>

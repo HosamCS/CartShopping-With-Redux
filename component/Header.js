@@ -23,30 +23,25 @@ export const Header = (props) => {
           <TouchableOpacity
             style={styles.leblelRight}
             onPress={props.onPressRight}>
-            <View
-              style={{
-                width: 50,
-                height: 30,
-                flexDirection: 'row',
-                justifyContent: 'space-evenly',
-              }}>
-              <View
-                style={{
-                  backgroundColor: 'red',
-                  width: 20,
-                  height: 20,
-                  borderRadius: 10,
-                  alignSelf: 'center',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  bottom: 8,
-                  left:8,
-                 
-                }}>
-                {/* <Text style={{color:'#fff',fontWeight:'800'}}>{state}</Text> */}
-              </View>
-              <Icon name={props.rightIcon} size={30} color="#000" />
-            </View>
+           
+                {state.count ===0 ?  
+                <Icon name={props.rightIcon} size={30} color="#000" />
+                :(
+                  <View
+                  style={{
+                    width: 50,
+                    height: 35,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}>
+                  <View style={styles.notifNubmer}> 
+                   <Text style={{color:'#fff',fontWeight:'bold',fontFamily:'cursive'}}>{state.count}</Text>
+                  </View>
+                   <Icon name={props.rightIcon} size={30} color="#000" />
+                 </View>
+             
+                )
+              }
           </TouchableOpacity>
         </View>
       </View>
@@ -75,8 +70,10 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 2.22,
         elevation: 10,
+      },
+      notifNubmer:{
+        justifyContent:'flex-start',width:20,height:20,backgroundColor:'red',left:12,bottom:6,borderRadius:10,alignItems:'center'
       }
-
     
 })
 
