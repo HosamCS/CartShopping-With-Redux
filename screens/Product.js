@@ -68,6 +68,7 @@ const Product = ({navigation,route}) => {
     }
   return (
     <View style={{flex:1}}> 
+      <ScrollView showsVerticalScrollIndicator={false}>
         <ImageProduct image={image} navigation={navigation} />
         <Info title={title} cost={cost}  />
 
@@ -83,6 +84,7 @@ const Product = ({navigation,route}) => {
             </TouchableOpacity>
             
         </View>
+      </ScrollView>
     </View>
   );
 };
